@@ -80,6 +80,11 @@ CombineChainsAndExtractSigs <-
         input.catalog <- input.catalog
       }
     }
+
+    if(is.null(ncol(input.catalog))) {
+      input.catalog <- matrix(input.catalog, nrow = length(input.catalog))
+    }
+
     input.catalog <- input.catalog[,colSums(input.catalog)>0]
     convSpectra <- t(input.catalog)
     number.channels <- nrow(input.catalog)

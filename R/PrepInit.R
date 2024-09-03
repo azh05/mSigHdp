@@ -42,6 +42,10 @@ PrepInit <- function(multi.types,
 
   input.catalog <- GetInputCatalogAsMatrix(input.catalog)
 
+  if(is.null(ncol(input.catalog))) {
+    input.catalog <- matrix(input.catalog, nrow = length(input.catalog))
+  }
+
   convSpectra <- t(input.catalog)
 
   number.channels <- nrow(input.catalog)

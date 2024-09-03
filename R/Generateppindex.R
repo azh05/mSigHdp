@@ -25,6 +25,9 @@
 
 
 Generateppindex <- function(multi.types, input.catalog) {
+  if(is.null(ncol(input.catalog))) {
+    input.catalog <- matrix(input.catalog, nrow = length(input.catalog))
+  }
 
   number.samples <- ncol(input.catalog)
 

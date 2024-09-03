@@ -21,7 +21,13 @@ GetInputCatalogAsMatrix <- function(input.catalog) {
   if (any(input.catalog < 0)) {
     stop("Elements < 0 found in input.catalog")
   }
+  
+  if(is.null(ncol(input.catalog))) {
+    input.catalog <- matrix(input.catalog, nrow = length(input.catalog))
+  }
+
   non.pos <- which(colSums(input.catalog) <= 0)
+  
   if (length(non.pos) > 0) {
     warning("removing columns with sums <= 0: ", paste(non.pos, collapse = ", "))
     input.catalog <- input.catalog[ , -non.pos]

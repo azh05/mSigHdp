@@ -125,6 +125,10 @@ RunHdpxParallel <- function(
     save(chlist, file = "big.chlist.from.ParallelGibbsSample.Rdata")
   }
 
+   if(is.null(merge.raw.cluster.args)) {
+    return(chlist)
+  }
+
   # Combine the posterior chains and extract
   # signatures and exposures;
   # retval has signatures, exposures, and multi.chains, a

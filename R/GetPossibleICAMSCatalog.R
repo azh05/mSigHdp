@@ -5,6 +5,11 @@ GetPossibleICAMSCatalog <- function(input.catalog) {
         input.catalog <- data.table::fread(input.catalog)
       }
   }
+
+  if(is.null(ncol(input.catalog))) {
+    input.catalog <- matrix(input.catalog, nrow = length(input.catalog))
+  }
+
   input.catalog <- input.catalog[,colSums(input.catalog)>0]
   return(input.catalog)
 }
