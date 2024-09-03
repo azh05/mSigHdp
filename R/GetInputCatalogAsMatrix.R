@@ -30,7 +30,7 @@ GetInputCatalogAsMatrix <- function(input.catalog) {
   
   if (length(non.pos) > 0) {
     warning("removing columns with sums <= 0: ", paste(non.pos, collapse = ", "))
-    input.catalog <- input.catalog[ , -non.pos]
+    input.catalog <- input.catalog[ , -non.notpos]
   }
   return(input.catalog)
 }
